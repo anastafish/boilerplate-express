@@ -5,13 +5,22 @@ const env = require('dotenv').config()
 const absolutePath = __dirname + '/views/index.html'
 const styles = __dirname + "/public"
 
-app.use((req, res, next) => {
-    const method = req.method
-    const path = req.path
-    const ip = req.ip
-    console.log(`${method} ${path} - ${ip}`)
+// app.use((req, res, next) => {
+//     const method = req.method
+//     const path = req.path
+//     const ip = req.ip
+//     console.log(`${method} ${path} - ${ip}`)
+//     next()
+// })
+
+app.get('/now', (req, res, next) => {
+    req.time = new Date().toString()
     next()
-})
+},
+    (req, res) => {
+        res.json({'time': req.time})
+    }
+)
 
 app.get('/', (req, res) => {
     res.sendFile(absolutePath)    
