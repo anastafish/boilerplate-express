@@ -3,7 +3,7 @@ let app = express();
 
 const absolutePath = __dirname + '/views/index.html'
 const styles = __dirname + "/public"
-const json_data = {"message":"hello json"}
+const json_data = {"message":"Hello json"}
 
 app.get('/', (req, res) => {
     res.sendFile(absolutePath)    
