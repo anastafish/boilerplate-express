@@ -1,10 +1,15 @@
 let express = require('express');
 let app = express();
 
-absolutePath = __dirname + '/views/index.html'
+const absolutePath = __dirname + '/views/index.html'
+const styles = __dirname + "/public"
 
 app.get('/', (req, res) => {
-    res.sendFile(absolutePath)
+    res.sendFile(absolutePath)    
 })
+
+app.use('/public', express.static(styles));
+
+
 
  module.exports = app;
