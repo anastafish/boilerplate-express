@@ -1,6 +1,7 @@
 let express = require('express');
 let app = express();
 const env = require('dotenv').config()
+const bodyParser = require('body-parser')
 
 const absolutePath = __dirname + '/views/index.html'
 const styles = __dirname + "/public"
@@ -13,8 +14,9 @@ const styles = __dirname + "/public"
 //     next()
 // })
 
-app.post('/name', (req, res) => {
-    console.log(req.query)
+app.use((req, res, next) => {
+    bodyParser.urlencoded({extended: false})
+    next()
 })
 
 app.get('/name', (req, res) => {
