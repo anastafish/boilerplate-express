@@ -13,6 +13,14 @@ const styles = __dirname + "/public"
 //     next()
 // })
 
+app.post('/name', (req, res) => {
+    console.log(req.query)
+})
+
+app.get('/name', (req, res) => {
+    res.json({name:`${req.query.first} ${req.query.last}`})
+})
+
 app.get('/:word/echo',(req, res, next) => {
     res.json({echo:req.params.word})
 })
