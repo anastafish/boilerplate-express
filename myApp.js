@@ -5,7 +5,6 @@ const bodyParser = require('body-parser')
 
 const absolutePath = __dirname + '/views/index.html'
 const styles = __dirname + "/public"
-const parser = bodyParser.urlencoded({extended: false})
 
 
 // app.use((req, res, next) => {
@@ -16,9 +15,7 @@ const parser = bodyParser.urlencoded({extended: false})
 //     next()
 // })
 
-app.use((req, res, next) => {
-    parser()
-})
+app.use(bodyParser.urlencoded({extended: false}))
 
 app.get('/name', (req, res) => {
     res.json({name:`${req.query.first} ${req.query.last}`})
